@@ -1,11 +1,14 @@
-import './App.css';
+import React from 'react';
+import Feed from './components/Feed';
+import "./App.css"
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      
+    <div>
+      <Feed />
     </div>
   );
-}
+};
 
 export default App;
