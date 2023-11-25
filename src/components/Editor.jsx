@@ -2,41 +2,60 @@ import React, { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
+import "../styles/Editor.css";
 
 const Editor = () => {
   const ejInstance = useRef();
 
-  useEffect(() => {
-    const editor = new EditorJS({
-      holderId: "editorjs",
-      onReady: () => {
-        ejInstance.current = editor;
+  const editor = new EditorJS({
+    holderId: "editorjs",
+    onReady: () => {
+      ejInstance.current = editor;
+    },
+    autofocus: true,
+    onChange: async () => {
+      let content = await editor.saver.save();
+      console.log(content);
+    },
+    tools: {
+      header: {
+        class: Header,
+        inlineToolbar: ["link"],
       },
-      autofocus: true,
-      onChange: async () => {
-        let content = await editor.saver.save();
-        console.log(content);
+      list: {
+        class: List,
+        inlineToolbar: true,
       },
-      tools: {
-        header: {
-          class: Header,
-          inlineToolbar: ["link"],
-        },
-        list: {
-          class: List,
-          inlineToolbar: true,
-        },
-      },
+    },
+  });
+
+  editor.isReady
+    .then(() => {
+      console.log("Editor.js is ready to work!");
+      /** Do anything you need after editor initialization */
+    })
+    .catch((reason) => {
+      console.log(`Editor.js initialization failed because of ${reason}`);
     });
 
-    return () => {
-      ejInstance?.current?.destroy();
-      ejInstance.current = null;
-    };
-  }, []);
+  const handlePostBtn = () => {
+    editor
+      .save()
+      .then((outputData) => {
+        console.log("Article data: ", outputData);
+      })
+      .catch((error) => {
+        console.log("Saving failed: ", error);
+      });
+  };
 
   return (
-  <div id="editorjs"></div>
+    <div className="fff">
+      <div id="editorjs"></div>
+      <button onClick={handlePostBtn} className="post-button">
+        Post
+      </button>
+    </div>
   );
 };
 

@@ -1,0 +1,53 @@
+.fff {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    background-color: #fff; /* White background */
+  }
+
+  #editorjs {
+    width: 100%;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optional: Add styles for the EditorJS tools */
+  .cdxt-toolbox {
+    background-color: #f4f4f4; /* Light gray background for tools */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .cdxt-inline-toolbar {
+    background-color: #f4f4f4; /* Light gray background for inline toolbar */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .cdxt-inline-toolbar-button {
+    color: #333; /* Dark gray button color */
+  }
+
+  .post-button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .post-button:hover {
+    background-color: #2980b9;
+  }

@@ -5,7 +5,6 @@ import "../styles/Header.css";
 
 const Header = () => {
     return (
-        <Router>
           <header className="header">
             <div className="left-section">
               <Link to="/" className="logo">
@@ -23,11 +22,7 @@ const Header = () => {
                 Profile
               </Link>
             </div>
-            <Routes>
-              <Route exact path="/write" element={<Editor />} />
-            </Routes>
           </header>
-        </Router>
       );
 };
 
