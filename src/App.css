@@ -1,1 +1,37 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
+  .connect {
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .connect h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .connect h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .connect button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .connect button:hover {
+    background-color: #2980b9;
+  }

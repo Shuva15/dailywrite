@@ -1,32 +1,43 @@
-import React, { useState, useEffect } from 'react'
-import EditorJS from '@editorjs/editorjs'
-import Header from '@editorjs/header'; 
-import List from '@editorjs/list'; 
+import React, { useEffect, useRef } from "react";
+import EditorJS from "@editorjs/editorjs";
+import Header from "@editorjs/header";
+import List from "@editorjs/list";
 
 const Editor = () => {
-    const [editor, setEditor] = useState(null);
+  const ejInstance = useRef();
 
-    useEffect(() => {
-      const editor = new EditorJS({
-        holder: 'editorjs',
-        tools: { 
-            header: {
-              class: Header, 
-              inlineToolbar: ['link'],
-            }, 
-            list: { 
-              class: List, 
-              inlineToolbar: true 
-            },
-          },
-      });
-  
-      setEditor(editor);
-    }, []);
-  
-    return (
-      <div id="editorjs"></div>
-    );
-}
+  useEffect(() => {
+    const editor = new EditorJS({
+      holderId: "editorjs",
+      onReady: () => {
+        ejInstance.current = editor;
+      },
+      autofocus: true,
+      onChange: async () => {
+        let content = await editor.saver.save();
+        console.log(content);
+      },
+      tools: {
+        header: {
+          class: Header,
+          inlineToolbar: ["link"],
+        },
+        list: {
+          class: List,
+          inlineToolbar: true,
+        },
+      },
+    });
 
-export default Editor
+    return () => {
+      ejInstance?.current?.destroy();
+      ejInstance.current = null;
+    };
+  }, []);
+
+  return (
+  <div id="editorjs"></div>
+  );
+};
+
+export default Editor;
