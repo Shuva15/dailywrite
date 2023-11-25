@@ -2,6 +2,7 @@ import React from 'react';
 import { authenticate, unauthenticate } from '@onflow/fcl';
 import useCurrentUser from '../lib/utils';
 import Feed from './Feed';
+import Header from './Header';
 
 const Connect = () => {
     const { addr, loggedIn } = useCurrentUser();
@@ -17,7 +18,9 @@ const Connect = () => {
         </button>
 
         {loggedIn && (
-          <Feed />
+            <><Header />
+            <Feed /></>
+          
         )}
       </main>
     </div>
