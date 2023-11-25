@@ -3,6 +3,7 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import "../styles/Editor.css";
+import data from "../lib/data";
 
 const Editor = () => {
   const ejInstance = useRef();
@@ -43,10 +44,12 @@ const Editor = () => {
       .save()
       .then((outputData) => {
         console.log("Article data: ", outputData);
+        data.push(outputData)
       })
       .catch((error) => {
         console.log("Saving failed: ", error);
       });
+      
   };
 
   return (
