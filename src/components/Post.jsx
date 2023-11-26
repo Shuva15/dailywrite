@@ -1,5 +1,6 @@
 import React from "react";
 import editorjsHTML from 'editorjs-html'
+import '../styles/Post.css'
 
 const Post = (props) => {
   const date = new Date();
@@ -9,16 +10,13 @@ const Post = (props) => {
     year: "numeric",
   });
 
-  // const edjsParser = editorjsHTML()
-  // const html = edjsParser.parse(props.content);
-  // console.log(html)
-
   return (
     <div className="post">
-        <div dangerouslySetInnerHTML={{ __html: props.contant }} />
-      <p className="byline">
-        <span className="date">{formattedDate}</span>
-      </p>
+        <div className="post-container" dangerouslySetInnerHTML={{ __html: props.content }} />
+        {console.log(props.content)}
+      
+        <div className="date">{formattedDate}</div>
+      
     </div>
   );
 };

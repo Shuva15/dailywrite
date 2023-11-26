@@ -1,5 +1,10 @@
-.feed {
+.feed-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+}
+
+.feed {
+  width: 770px; /* Adjust the width of the feed */
+  padding: 40px;
+  overflow-y: auto;
 }

@@ -10,19 +10,21 @@ const Feed = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await fcl.send([fcl.script(getPosts)]).then(fcl.decode);
-      setData(result);
+      console.log(result)
+      setData(result.reverse());
     };
 
     fetchData();
+    console.log(data)
   }, []);
 
   return (
-    <div className="feed">
-      {data.map((post) => (
-        <Post
-          content={post}
-        />
-      ))}
+    <div className="feed-container">
+      <div className="feed">
+        {data.map((post, index) => (
+          <Post key={index} content={post} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -52,7 +52,7 @@ const Editor = () => {
         const transactionId = await fcl.send([
           fcl.transaction(updatePosts),
           fcl.args([
-            fcl.arg(html, types.Array)
+            fcl.arg(html, types.Array(types.String))
           ]),
           fcl.payer(fcl.authz),
           fcl.proposer(fcl.authz),
@@ -70,6 +70,7 @@ const Editor = () => {
 
   return (
     <div className="write-page">
+      <h2>What's going on today!</h2>
       <div id="editorjs"></div>
       <button onClick={handlePostBtn} className="post-button">
         Post
