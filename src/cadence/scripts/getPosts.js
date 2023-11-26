@@ -1,7 +1,7 @@
 export const getPosts = `
-import DailyWrite from 0xfb0a033ba41d3662
+import WriteDaily from 0xe5693d4d27e108c1
 
-pub fun main(): [String] {
-  return DailyWrite.allPosts
+pub fun main(): [[String]] {
+  return WriteDaily.allPosts
 }
 `

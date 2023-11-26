@@ -1,14 +1,14 @@
 export const updatePosts = `
-import DailyWrite from 0xfb0a033ba41d3662
+import WriteDaily from 0xe5693d4d27e108c1
 
-transaction(post: String) {
+transaction(post: [String]) {
 
   prepare(acct: AuthAccount) {
     
   }
 
   execute {
-   DailyWrite.addPost(post: post)
+    WriteDaily.addPost(post: post)
    }
 }
 `

@@ -1,6 +1,6 @@
 {
 	"contracts": {
-		"DailyWrite": "./src/cadence/contracts/DailyWrite.cdc"
+		"WriteDaily": "./src/cadence/contracts/DailyWrite.cdc"
 	},
 	"networks": {
 		"emulator": "127.0.0.1:3569",
@@ -9,24 +9,29 @@
 	},
 	"accounts": {
 		"emulator-account": {
-			"address": "f8d6e0586b0a20c7",
+			"address": "1c70d33a639a7c56",
 			"key": "333c6910a3da1d7ffd777c05af54af6c520ccc975a2c012ad8249fd331261ff5"
 		},
-		"textnet-account": {
-			"address": "0xfb0a033ba41d3662",
+		"testnet-account": {
+			"address": "0xe5693d4d27e108c1",
 			"key": {
 				"type": "hex",
 				"index": 0,
 				"signatureAlgorithm": "ECDSA_secp256k1",
 				"hashAlgorithm": "SHA3_256",
-				"privateKey": "a607736d6c54c8e628181ca306d1396d74dcf91f8910d9d4c60a55846566f0a7"
+				"privateKey": "7bb7271006c7d3c6529d30ca10a18eb12fcabac3c18a547b3a8b2f1a5fc57358"
 			}
 		}
 	},
 	"deployments": {
+		"emulator": {
+			"emulator-account": [
+				"WriteDaily"
+			]
+		},
 		"testnet": {
 			"testnet-account": [
-				"DailyWrite"
+				"WriteDaily"
 			]
 		}
 	}

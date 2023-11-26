@@ -9,13 +9,13 @@ const Post = (props) => {
     year: "numeric",
   });
 
-  const edjsParser = editorjsHTML()
-  const html = edjsParser.parse(props.content);
-  console.log(html)
+  // const edjsParser = editorjsHTML()
+  // const html = edjsParser.parse(props.content);
+  // console.log(html)
 
   return (
     <div className="post">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div dangerouslySetInnerHTML={{ __html: props.contant }} />
       <p className="byline">
         <span className="date">{formattedDate}</span>
       </p>

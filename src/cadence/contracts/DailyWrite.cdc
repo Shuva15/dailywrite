@@ -1,7 +1,7 @@
-pub contract  DailyWrite {
-    pub var allPosts: [String]
+pub contract  WriteDaily {
+    pub var allPosts: [[String]]
 
-    pub fun addPost(post: String) {
+    pub fun addPost(post: [String]) {
         self.allPosts.append(post)
     }
 

@@ -6,6 +6,7 @@ import "../styles/Editor.css";
 import * as fcl from "@onflow/fcl";
 import * as types from "@onflow/types"
 import { updatePosts } from "../cadence/transactions/updatePosts";
+import editorjsHTML from 'editorjs-html'
 
 const Editor = () => {
   const ejInstance = useRef();
@@ -45,16 +46,19 @@ const Editor = () => {
     editor
       .save()
       .then(async (outputData) => {
+        const edjsParser = editorjsHTML()
+        const html = edjsParser.parse(outputData);
+        console.log(html)
         const transactionId = await fcl.send([
           fcl.transaction(updatePosts),
           fcl.args([
-            fcl.arg(outputData, types.String)
+            fcl.arg(html, types.Array)
           ]),
           fcl.payer(fcl.authz),
           fcl.proposer(fcl.authz),
           fcl.authorizations([fcl.authz]),
           fcl.limit(9999)
-        ]);
+        ]).then(fcl.decode);
   
         console.log(transactionId)
       })
