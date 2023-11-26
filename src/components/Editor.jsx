@@ -3,7 +3,9 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import "../styles/Editor.css";
-import data from "../lib/data";
+import * as fcl from "@onflow/fcl";
+import * as types from "@onflow/types"
+import { updatePosts } from "../cadence/transactions/updatePosts";
 
 const Editor = () => {
   const ejInstance = useRef();
@@ -42,9 +44,19 @@ const Editor = () => {
   const handlePostBtn = () => {
     editor
       .save()
-      .then((outputData) => {
-        console.log("Article data: ", outputData);
-        data.push(outputData)
+      .then(async (outputData) => {
+        const transactionId = await fcl.send([
+          fcl.transaction(updatePosts),
+          fcl.args([
+            fcl.arg(outputData, types.String)
+          ]),
+          fcl.payer(fcl.authz),
+          fcl.proposer(fcl.authz),
+          fcl.authorizations([fcl.authz]),
+          fcl.limit(9999)
+        ]);
+  
+        console.log(transactionId)
       })
       .catch((error) => {
         console.log("Saving failed: ", error);
