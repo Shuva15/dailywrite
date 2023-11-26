@@ -1,0 +1,33 @@
+{
+	"contracts": {
+		"DailyWrite": "./src/cadence/contracts/DailyWrite.cdc"
+	},
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": "333c6910a3da1d7ffd777c05af54af6c520ccc975a2c012ad8249fd331261ff5"
+		},
+		"textnet-account": {
+			"address": "0xfb0a033ba41d3662",
+			"key": {
+				"type": "hex",
+				"index": 0,
+				"signatureAlgorithm": "ECDSA_secp256k1",
+				"hashAlgorithm": "SHA3_256",
+				"privateKey": "a607736d6c54c8e628181ca306d1396d74dcf91f8910d9d4c60a55846566f0a7"
+			}
+		}
+	},
+	"deployments": {
+		"testnet": {
+			"testnet-account": [
+				"DailyWrite"
+			]
+		}
+	}
+}

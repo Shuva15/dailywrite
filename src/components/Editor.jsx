@@ -53,7 +53,7 @@ const Editor = () => {
   };
 
   return (
-    <div className="fff">
+    <div className="write-page">
       <div id="editorjs"></div>
       <button onClick={handlePostBtn} className="post-button">
         Post

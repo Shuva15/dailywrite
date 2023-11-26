@@ -11,7 +11,7 @@ const Post = (props) => {
 
   const edjsParser = editorjsHTML()
   const html = edjsParser.parse(props.content);
-
+  console.log(html)
 
   return (
     <div className="post">
